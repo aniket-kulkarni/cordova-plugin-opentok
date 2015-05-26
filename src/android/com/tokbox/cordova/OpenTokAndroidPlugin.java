@@ -641,7 +641,7 @@ public class OpenTokAndroidPlugin extends CordovaPlugin implements
     try{
       JSONObject stream = createDataFromStream( arg1 );
       data.put("stream", stream);
-      triggerJSEvent( eventType, "streamCreated", data);
+      triggerJSEvent( eventType, "streamCreatedAniket", data);
     }catch (JSONException e) {}
     
     Log.i(TAG, "stream received done");
