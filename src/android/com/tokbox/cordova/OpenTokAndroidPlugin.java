@@ -319,6 +319,7 @@ public class OpenTokAndroidPlugin extends CordovaPlugin implements
 
   @Override
   public void onVideoDisableWarning(SubscriberKit arg0) {
+    triggerJSEvent("sessionEvents","videoDisableWarning",{});
     // TODO Auto-generated method stub
     
   }
@@ -326,18 +327,21 @@ public class OpenTokAndroidPlugin extends CordovaPlugin implements
   @Override
   public void onVideoDisableWarningLifted(SubscriberKit arg0) {
     // TODO Auto-generated method stub
+    triggerJSEvent("sessionEvents","videoDisableWarningLifted",{});
     
   }
 
   @Override
   public void onVideoDisabled(SubscriberKit arg0, String arg1) {
     // TODO Auto-generated method stub
+    triggerJSEvent("sessionEvents","videoDisabled",{});
     
   }
 
   @Override
   public void onVideoEnabled(SubscriberKit arg0, String arg1) {
     // TODO Auto-generated method stub
+    triggerJSEvent("sessionEvents","videoEnabled",{});
     
   }
   }
