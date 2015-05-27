@@ -320,7 +320,11 @@ public class OpenTokAndroidPlugin extends CordovaPlugin implements
   @Override
   public void onVideoDisableWarning(SubscriberKit arg0) {
     Log.i(TAG, "onVideoDisableWarning"); 
-     JSONObject eventData = new JSONObject();
+    JSONObject eventData = new JSONObject();
+    String streamId = arg0.getStream().getStreamId();
+    String connectionId = arg0.getStream().getConnection().getConnectionId();
+    eventData.put("connectionId", connectionId);
+    eventData.put("streamId", streamId);
     triggerJSEvent("sessionEvents","videoDisableWarning",eventData);
     // TODO Auto-generated method stub
     
@@ -330,24 +334,42 @@ public class OpenTokAndroidPlugin extends CordovaPlugin implements
   public void onVideoDisableWarningLifted(SubscriberKit arg0) {
     Log.i(TAG, "onVideoDisableWarningLifted"); 
      JSONObject eventData = new JSONObject();
+
+    String streamId = arg0.getStream().getStreamId();
+    String connectionId = arg0.getStream().getConnection().getConnectionId();
+    eventData.put("connectionId", connectionId);
+    eventData.put("streamId", streamId);
+
     // TODO Auto-generated method stub
     triggerJSEvent("sessionEvents","videoDisableWarningLifted",eventData);
     
   }
 
   @Override
-  public void onVideoDisabled(SubscriberKit arg0, String arg1) {
+  public void onVideoDisabled(SubscriberKit arg0, String reason) {
     Log.i(TAG, "onVideoDisabled"); 
      JSONObject eventData = new JSONObject();
+     eventData.put("reason",reason);
+
+    String streamId = arg0.getStream().getStreamId();
+    String connectionId = arg0.getStream().getConnection().getConnectionId();
+    eventData.put("connectionId", connectionId);
+    eventData.put("streamId", streamId);
     // TODO Auto-generated method stub
     triggerJSEvent("sessionEvents","videoDisabled",eventData);
     
   }
 
   @Override
-  public void onVideoEnabled(SubscriberKit arg0, String arg1) {
+  public void onVideoEnabled(SubscriberKit arg0, String reason) {
     Log.i(TAG, "onVideoEnabled"); 
-     JSONObject eventData = new JSONObject();
+    JSONObject eventData = new JSONObject();
+    eventData.put("reason",reason);
+
+    String streamId = arg0.getStream().getStreamId();
+    String connectionId = arg0.getStream().getConnection().getConnectionId();
+    eventData.put("connectionId", connectionId);
+    eventData.put("streamId", streamId);
     // TODO Auto-generated method stub
     triggerJSEvent("sessionEvents","videoEnabled",eventData);
     
@@ -572,7 +594,6 @@ public class OpenTokAndroidPlugin extends CordovaPlugin implements
   // connectionListener
   public void onConnectionCreated(Session arg0, Connection arg1) {
     Log.i(TAG, "connectionCreated");   
-    Log.i(TAG, "Aniket test");   
 
     connectionCollection.put(arg1.getConnectionId(), arg1);
 
