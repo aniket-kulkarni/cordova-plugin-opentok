@@ -572,6 +572,7 @@ public class OpenTokAndroidPlugin extends CordovaPlugin implements
   // connectionListener
   public void onConnectionCreated(Session arg0, Connection arg1) {
     Log.i(TAG, "connectionCreated");   
+    Log.i(TAG, "Aniket test");   
 
     connectionCollection.put(arg1.getConnectionId(), arg1);
 
