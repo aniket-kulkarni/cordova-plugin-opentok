@@ -319,6 +319,7 @@ public class OpenTokAndroidPlugin extends CordovaPlugin implements
 
   @Override
   public void onVideoDisableWarning(SubscriberKit arg0) {
+    Log.i(TAG, "onVideoDisableWarning"); 
      JSONObject eventData = new JSONObject();
     triggerJSEvent("sessionEvents","videoDisableWarning",eventData);
     // TODO Auto-generated method stub
@@ -327,6 +328,7 @@ public class OpenTokAndroidPlugin extends CordovaPlugin implements
 
   @Override
   public void onVideoDisableWarningLifted(SubscriberKit arg0) {
+    Log.i(TAG, "onVideoDisableWarningLifted"); 
      JSONObject eventData = new JSONObject();
     // TODO Auto-generated method stub
     triggerJSEvent("sessionEvents","videoDisableWarningLifted",eventData);
@@ -335,6 +337,7 @@ public class OpenTokAndroidPlugin extends CordovaPlugin implements
 
   @Override
   public void onVideoDisabled(SubscriberKit arg0, String arg1) {
+    Log.i(TAG, "onVideoDisabled"); 
      JSONObject eventData = new JSONObject();
     // TODO Auto-generated method stub
     triggerJSEvent("sessionEvents","videoDisabled",eventData);
@@ -343,6 +346,7 @@ public class OpenTokAndroidPlugin extends CordovaPlugin implements
 
   @Override
   public void onVideoEnabled(SubscriberKit arg0, String arg1) {
+    Log.i(TAG, "onVideoEnabled"); 
      JSONObject eventData = new JSONObject();
     // TODO Auto-generated method stub
     triggerJSEvent("sessionEvents","videoEnabled",eventData);
@@ -649,7 +653,7 @@ public class OpenTokAndroidPlugin extends CordovaPlugin implements
     try{
       JSONObject stream = createDataFromStream( arg1 );
       data.put("stream", stream);
-      triggerJSEvent( eventType, "streamCreatedAniket", data);
+      triggerJSEvent( eventType, "streamCreated", data);
     }catch (JSONException e) {}
     
     Log.i(TAG, "stream received done");
