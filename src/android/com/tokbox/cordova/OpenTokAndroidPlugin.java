@@ -323,9 +323,15 @@ public class OpenTokAndroidPlugin extends CordovaPlugin implements
     JSONObject eventData = new JSONObject();
     String streamId = arg0.getStream().getStreamId();
     String connectionId = arg0.getStream().getConnection().getConnectionId();
-    eventData.put("connectionId", connectionId);
-    eventData.put("streamId", streamId);
-    triggerJSEvent("sessionEvents","videoDisableWarning",eventData);
+    try{
+      eventData.put("connectionId", connectionId);
+      eventData.put("streamId", streamId);
+      triggerJSEvent("sessionEvents","videoDisableWarning",eventData);
+    }
+    catch(JSONException e){
+        Log.e(TAG, "JSONException"+e.getMessage());
+    }
+    
     // TODO Auto-generated method stub
     
   }
@@ -337,11 +343,14 @@ public class OpenTokAndroidPlugin extends CordovaPlugin implements
 
     String streamId = arg0.getStream().getStreamId();
     String connectionId = arg0.getStream().getConnection().getConnectionId();
-    eventData.put("connectionId", connectionId);
-    eventData.put("streamId", streamId);
-
-    // TODO Auto-generated method stub
-    triggerJSEvent("sessionEvents","videoDisableWarningLifted",eventData);
+    try{
+      eventData.put("connectionId", connectionId);
+      eventData.put("streamId", streamId);
+      triggerJSEvent("sessionEvents","videoDisableWarningLifted",eventData);
+    }
+    catch(JSONException e){
+        Log.e(TAG, "JSONException"+e.getMessage());
+    }
     
   }
 
@@ -349,15 +358,18 @@ public class OpenTokAndroidPlugin extends CordovaPlugin implements
   public void onVideoDisabled(SubscriberKit arg0, String reason) {
     Log.i(TAG, "onVideoDisabled"); 
      JSONObject eventData = new JSONObject();
-     eventData.put("reason",reason);
-
     String streamId = arg0.getStream().getStreamId();
     String connectionId = arg0.getStream().getConnection().getConnectionId();
-    eventData.put("connectionId", connectionId);
-    eventData.put("streamId", streamId);
-    // TODO Auto-generated method stub
-    triggerJSEvent("sessionEvents","videoDisabled",eventData);
-    
+     
+     try{
+       eventData.put("connectionId", connectionId);
+       eventData.put("reason",reason);
+       eventData.put("streamId", streamId);
+       triggerJSEvent("sessionEvents","videoDisabled",eventData);
+     }
+     catch(JSONException e){
+         Log.e(TAG, "JSONException"+e.getMessage());
+     }
   }
 
   @Override
@@ -368,12 +380,17 @@ public class OpenTokAndroidPlugin extends CordovaPlugin implements
 
     String streamId = arg0.getStream().getStreamId();
     String connectionId = arg0.getStream().getConnection().getConnectionId();
-    eventData.put("connectionId", connectionId);
-    eventData.put("streamId", streamId);
-    // TODO Auto-generated method stub
-    triggerJSEvent("sessionEvents","videoEnabled",eventData);
+    try{
+       eventData.put("connectionId", connectionId);
+       eventData.put("reason",reason);
+       eventData.put("streamId", streamId);
+       triggerJSEvent("sessionEvents","videoEnabled",eventData);
+     }
+     catch(JSONException e){
+         Log.e(TAG, "JSONException"+e.getMessage());
+     }
     
-  }
+   }
   }
 
   @Override
